@@ -1,0 +1,10 @@
+c:\users\plehanov\documents\visual studio 2013\Projects\DichMusicHelper\DichMusicHelper\obj\Debug\DichMusicHelper.csprojResolveAssemblyReference.cache
+c:\users\plehanov\documents\visual studio 2013\Projects\DichMusicHelper\DichMusicHelper\obj\Debug\DichMusicHelper.Properties.Resources.resources
+c:\users\plehanov\documents\visual studio 2013\Projects\DichMusicHelper\DichMusicHelper\obj\Debug\DichMusicHelper.csproj.GenerateResource.Cache
+c:\users\plehanov\documents\visual studio 2013\Projects\DichMusicHelper\DichMusicHelper\bin\Debug\DichMusicHelper.exe
+c:\users\plehanov\documents\visual studio 2013\Projects\DichMusicHelper\DichMusicHelper\bin\Debug\DichMusicHelper.pdb
+c:\users\plehanov\documents\visual studio 2013\Projects\DichMusicHelper\DichMusicHelper\obj\Debug\DichMusicHelper.exe
+c:\users\plehanov\documents\visual studio 2013\Projects\DichMusicHelper\DichMusicHelper\obj\Debug\DichMusicHelper.pdb
+c:\users\plehanov\documents\visual studio 2013\Projects\DichMusicHelper\DichMusicHelper\obj\Debug\DichMusicHelper.MainForm.resources
+c:\users\plehanov\documents\visual studio 2013\Projects\DichMusicHelper\DichMusicHelper\obj\Debug\DichMusicHelper.ProxyForm.resources
+c:\users\plehanov\documents\visual studio 2013\Projects\DichMusicHelper\DichMusicHelper\obj\Debug\DichMusicHelper.PathSettingForm.resources

@@ -1,0 +1,21 @@
+C:\Users\plehanov\Documents\Visual Studio 2013\Projects\DichMusicHelper\DichMusicHelper\bin\Release\MusicFromVKWalls.exe
+C:\Users\plehanov\Documents\Visual Studio 2013\Projects\DichMusicHelper\DichMusicHelper\bin\Release\MusicFromVKWalls.pdb
+C:\Users\plehanov\Documents\Visual Studio 2013\Projects\DichMusicHelper\DichMusicHelper\obj\Release\DichMusicHelper.AboutForm.resources
+C:\Users\plehanov\Documents\Visual Studio 2013\Projects\DichMusicHelper\DichMusicHelper\obj\Release\DichMusicHelper.MainForm.resources
+C:\Users\plehanov\Documents\Visual Studio 2013\Projects\DichMusicHelper\DichMusicHelper\obj\Release\DichMusicHelper.PathSettingForm.resources
+C:\Users\plehanov\Documents\Visual Studio 2013\Projects\DichMusicHelper\DichMusicHelper\obj\Release\MusicFromVKWalls.Properties.Resources.resources
+C:\Users\plehanov\Documents\Visual Studio 2013\Projects\DichMusicHelper\DichMusicHelper\obj\Release\DichMusicHelper.ProxyForm.resources
+C:\Users\plehanov\Documents\Visual Studio 2013\Projects\DichMusicHelper\DichMusicHelper\obj\Release\MusicFromVKWalls.csproj.GenerateResource.Cache
+C:\Users\plehanov\Documents\Visual Studio 2013\Projects\DichMusicHelper\DichMusicHelper\obj\Release\MusicFromVKWalls.exe
+C:\Users\plehanov\Documents\Visual Studio 2013\Projects\DichMusicHelper\DichMusicHelper\obj\Release\MusicFromVKWalls.pdb
+C:\Users\Samsung\Desktop\DichMusicHelper\DichMusicHelper\obj\Release\MusicFromVKWalls.exe
+C:\Users\Samsung\Desktop\DichMusicHelper\DichMusicHelper\obj\Release\MusicFromVKWalls.pdb
+C:\Users\Samsung\Desktop\DichMusicHelper\DichMusicHelper\bin\Release\MusicFromVKWalls.exe
+C:\Users\Samsung\Desktop\DichMusicHelper\DichMusicHelper\bin\Release\MusicFromVKWalls.pdb
+C:\Users\Samsung\Desktop\DichMusicHelper\DichMusicHelper\obj\Release\MusicFromVKWalls.csprojResolveAssemblyReference.cache
+C:\Users\Samsung\Desktop\DichMusicHelper\DichMusicHelper\obj\Release\DichMusicHelper.AboutForm.resources
+C:\Users\Samsung\Desktop\DichMusicHelper\DichMusicHelper\obj\Release\DichMusicHelper.MainForm.resources
+C:\Users\Samsung\Desktop\DichMusicHelper\DichMusicHelper\obj\Release\DichMusicHelper.PathSettingForm.resources
+C:\Users\Samsung\Desktop\DichMusicHelper\DichMusicHelper\obj\Release\MusicFromVKWalls.Properties.Resources.resources
+C:\Users\Samsung\Desktop\DichMusicHelper\DichMusicHelper\obj\Release\DichMusicHelper.ProxyForm.resources
+C:\Users\Samsung\Desktop\DichMusicHelper\DichMusicHelper\obj\Release\MusicFromVKWalls.csproj.GenerateResource.Cache
