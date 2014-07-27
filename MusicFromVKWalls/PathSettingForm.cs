@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -20,6 +21,11 @@ namespace DichMusicHelper
         {
             FolderBrowserDialog dialog = new FolderBrowserDialog();
             dialog.ShowNewFolderButton = true;
+            
+            if (Directory.Exists(pathTextBox.Text))
+            {
+                dialog.SelectedPath = pathTextBox.Text;
+            }
             dialog.ShowDialog(this);
 
             if (dialog.SelectedPath != "")
@@ -38,13 +44,11 @@ namespace DichMusicHelper
             string settingsFile = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\DichMusicHelperPathSettings.xml";
 
             using (System.Xml.XmlTextWriter writer = new System.Xml.XmlTextWriter(settingsFile, System.Text.Encoding.Unicode))
-            {                
-                //writer.WriteStartDocument(true);                
+            {                         
                 writer.WriteStartElement("PathSettings");
                 writer.WriteAttributeString("Path", pathTextBox.Text);
                 writer.WriteAttributeString("CreateFolder", createFolderBox.Checked.ToString());
-                writer.WriteEndElement();
-                //writer.WriteEndDocument();
+                writer.WriteEndElement();                
                 writer.Close();
             }
 

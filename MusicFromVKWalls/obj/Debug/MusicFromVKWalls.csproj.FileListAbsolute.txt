@@ -20,3 +20,14 @@ C:\Users\Samsung\Desktop\DichMusicHelper\MusicFromVKWalls\obj\Debug\DichMusicHel
 C:\Users\Samsung\Desktop\DichMusicHelper\MusicFromVKWalls\obj\Debug\MusicFromVKWalls.Properties.Resources.resources
 C:\Users\Samsung\Desktop\DichMusicHelper\MusicFromVKWalls\obj\Debug\DichMusicHelper.ProxyForm.resources
 C:\Users\Samsung\Desktop\DichMusicHelper\MusicFromVKWalls\obj\Debug\MusicFromVKWalls.csproj.GenerateResource.Cache
+g:\Projects\MusicFromVKWalls\MusicFromVKWalls\obj\Debug\MusicFromVKWalls.exe
+g:\Projects\MusicFromVKWalls\MusicFromVKWalls\obj\Debug\MusicFromVKWalls.pdb
+g:\Projects\MusicFromVKWalls\MusicFromVKWalls\obj\Debug\MusicFromVKWalls.csprojResolveAssemblyReference.cache
+g:\Projects\MusicFromVKWalls\MusicFromVKWalls\obj\Debug\DichMusicHelper.AboutForm.resources
+g:\Projects\MusicFromVKWalls\MusicFromVKWalls\obj\Debug\DichMusicHelper.MainForm.resources
+g:\Projects\MusicFromVKWalls\MusicFromVKWalls\obj\Debug\DichMusicHelper.PathSettingForm.resources
+g:\Projects\MusicFromVKWalls\MusicFromVKWalls\obj\Debug\MusicFromVKWalls.Properties.Resources.resources
+g:\Projects\MusicFromVKWalls\MusicFromVKWalls\obj\Debug\DichMusicHelper.ProxyForm.resources
+g:\Projects\MusicFromVKWalls\MusicFromVKWalls\obj\Debug\MusicFromVKWalls.csproj.GenerateResource.Cache
+g:\Projects\MusicFromVKWalls\MusicFromVKWalls\bin\Debug\MusicFromVKWalls.exe
+g:\Projects\MusicFromVKWalls\MusicFromVKWalls\bin\Debug\MusicFromVKWalls.pdb

@@ -44,8 +44,6 @@ namespace DichMusicHelper
                 list.Add(tmp);
             }
 
-            //audioListBox.Items.Clear();
-            
             if (temp.Count == 0)
             {
                 StatusLabel.Text = "Не удалось загрузить композиции";
@@ -66,10 +64,10 @@ namespace DichMusicHelper
 
         private string GetWallID(string urlString)
         {
-            if (!urlBox.Text.Contains("wall"))
+            if (!urlString.Contains("wall"))
                 return "";
 
-            string tmp = urlBox.Text.Substring(urlBox.Text.IndexOf("wall") + 4);
+            string tmp = urlString.Substring(urlString.IndexOf("wall") + 4);
 
             StringBuilder wallId = new StringBuilder();
             foreach (char ch in tmp)
@@ -238,8 +236,9 @@ namespace DichMusicHelper
                     myBackgroundWorker.ReportProgress(progress, task);
 
                     try
-                    {
+                    {                       
                         client.DownloadFile(list[audioIindex].Path, path + @"\" + task.Name + ".mp3");
+                        
                     }
                     catch (Exception)
                     {

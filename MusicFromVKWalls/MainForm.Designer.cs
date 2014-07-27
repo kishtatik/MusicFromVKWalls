@@ -59,25 +59,28 @@
             // 
             // urlBox
             // 
-            this.urlBox.Location = new System.Drawing.Point(61, 38);
+            this.urlBox.Location = new System.Drawing.Point(46, 31);
+            this.urlBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.urlBox.Name = "urlBox";
-            this.urlBox.Size = new System.Drawing.Size(305, 22);
+            this.urlBox.Size = new System.Drawing.Size(230, 20);
             this.urlBox.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 38);
+            this.label1.Location = new System.Drawing.Point(9, 31);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(30, 17);
+            this.label1.Size = new System.Drawing.Size(23, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "Url:";
             // 
             // getAudioListButton
             // 
-            this.getAudioListButton.Location = new System.Drawing.Point(372, 38);
+            this.getAudioListButton.Location = new System.Drawing.Point(279, 31);
+            this.getAudioListButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.getAudioListButton.Name = "getAudioListButton";
-            this.getAudioListButton.Size = new System.Drawing.Size(91, 26);
+            this.getAudioListButton.Size = new System.Drawing.Size(68, 21);
             this.getAudioListButton.TabIndex = 2;
             this.getAudioListButton.Text = "Получить";
             this.getAudioListButton.UseVisualStyleBackColor = true;
@@ -87,10 +90,11 @@
             // 
             this.audioListBox.ContextMenuStrip = this.listMenuStrip;
             this.audioListBox.FormattingEnabled = true;
-            this.audioListBox.Location = new System.Drawing.Point(12, 70);
+            this.audioListBox.Location = new System.Drawing.Point(9, 57);
+            this.audioListBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.audioListBox.Name = "audioListBox";
             this.audioListBox.ScrollAlwaysVisible = true;
-            this.audioListBox.Size = new System.Drawing.Size(451, 225);
+            this.audioListBox.Size = new System.Drawing.Size(339, 184);
             this.audioListBox.TabIndex = 3;
             // 
             // listMenuStrip
@@ -100,34 +104,35 @@
             this.selectNoAllToolStripMenuItem,
             this.clearListToolStripMenuItem});
             this.listMenuStrip.Name = "listMenuStrip";
-            this.listMenuStrip.Size = new System.Drawing.Size(201, 76);
+            this.listMenuStrip.Size = new System.Drawing.Size(174, 70);
             // 
             // selectAllStripMenuItem
             // 
             this.selectAllStripMenuItem.Name = "selectAllStripMenuItem";
-            this.selectAllStripMenuItem.Size = new System.Drawing.Size(200, 24);
+            this.selectAllStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.selectAllStripMenuItem.Text = "Выбрать все";
             this.selectAllStripMenuItem.Click += new System.EventHandler(this.selectAllStripMenuItem_Click);
             // 
             // selectNoAllToolStripMenuItem
             // 
             this.selectNoAllToolStripMenuItem.Name = "selectNoAllToolStripMenuItem";
-            this.selectNoAllToolStripMenuItem.Size = new System.Drawing.Size(200, 24);
+            this.selectNoAllToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.selectNoAllToolStripMenuItem.Text = "Снять выбор";
             this.selectNoAllToolStripMenuItem.Click += new System.EventHandler(this.selectNoAllToolStripMenuItem_Click);
             // 
             // clearListToolStripMenuItem
             // 
             this.clearListToolStripMenuItem.Name = "clearListToolStripMenuItem";
-            this.clearListToolStripMenuItem.Size = new System.Drawing.Size(200, 24);
+            this.clearListToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.clearListToolStripMenuItem.Text = "Очитстить список";
             this.clearListToolStripMenuItem.Click += new System.EventHandler(this.clearListToolStripMenuItem_Click);
             // 
             // downloadButton
             // 
-            this.downloadButton.Location = new System.Drawing.Point(12, 301);
+            this.downloadButton.Location = new System.Drawing.Point(9, 245);
+            this.downloadButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.downloadButton.Name = "downloadButton";
-            this.downloadButton.Size = new System.Drawing.Size(98, 26);
+            this.downloadButton.Size = new System.Drawing.Size(74, 21);
             this.downloadButton.TabIndex = 4;
             this.downloadButton.Text = "Загрузить";
             this.downloadButton.UseVisualStyleBackColor = true;
@@ -138,16 +143,17 @@
             this.mainStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.StatusProgress,
             this.StatusLabel});
-            this.mainStatusStrip.Location = new System.Drawing.Point(0, 335);
+            this.mainStatusStrip.Location = new System.Drawing.Point(0, 268);
             this.mainStatusStrip.Name = "mainStatusStrip";
-            this.mainStatusStrip.Size = new System.Drawing.Size(475, 22);
+            this.mainStatusStrip.Padding = new System.Windows.Forms.Padding(1, 0, 10, 0);
+            this.mainStatusStrip.Size = new System.Drawing.Size(356, 22);
             this.mainStatusStrip.TabIndex = 5;
             this.mainStatusStrip.Text = "statusStrip1";
             // 
             // StatusProgress
             // 
             this.StatusProgress.Name = "StatusProgress";
-            this.StatusProgress.Size = new System.Drawing.Size(100, 16);
+            this.StatusProgress.Size = new System.Drawing.Size(75, 16);
             // 
             // StatusLabel
             // 
@@ -162,7 +168,8 @@
             this.helpToolStripMenuItem});
             this.MainMenu.Location = new System.Drawing.Point(0, 0);
             this.MainMenu.Name = "MainMenu";
-            this.MainMenu.Size = new System.Drawing.Size(475, 28);
+            this.MainMenu.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.MainMenu.Size = new System.Drawing.Size(356, 24);
             this.MainMenu.TabIndex = 6;
             this.MainMenu.Text = "menuStrip1";
             // 
@@ -171,13 +178,13 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(57, 24);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.fileToolStripMenuItem.Text = "Файл";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(122, 24);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
             this.exitToolStripMenuItem.Text = "Выход";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -187,20 +194,20 @@
             this.proxyToolStripMenuItem,
             this.pathToolStripMenuItem});
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(96, 24);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
             this.settingsToolStripMenuItem.Text = "Настройки";
             // 
             // proxyToolStripMenuItem
             // 
             this.proxyToolStripMenuItem.Name = "proxyToolStripMenuItem";
-            this.proxyToolStripMenuItem.Size = new System.Drawing.Size(206, 24);
+            this.proxyToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.proxyToolStripMenuItem.Text = "Proxy...";
             this.proxyToolStripMenuItem.Click += new System.EventHandler(this.proxyToolStripMenuItem_Click);
             // 
             // pathToolStripMenuItem
             // 
             this.pathToolStripMenuItem.Name = "pathToolStripMenuItem";
-            this.pathToolStripMenuItem.Size = new System.Drawing.Size(206, 24);
+            this.pathToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.pathToolStripMenuItem.Text = "Путь сохранения...";
             this.pathToolStripMenuItem.Click += new System.EventHandler(this.pathToolStripMenuItem_Click);
             // 
@@ -209,13 +216,13 @@
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(81, 24);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
             this.helpToolStripMenuItem.Text = "Помощь";
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(182, 24);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.aboutToolStripMenuItem.Text = "О программе...";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -227,9 +234,10 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(352, 301);
+            this.button1.Location = new System.Drawing.Point(264, 245);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(111, 26);
+            this.button1.Size = new System.Drawing.Size(83, 21);
             this.button1.TabIndex = 7;
             this.button1.Text = "Очистить";
             this.button1.UseVisualStyleBackColor = true;
@@ -237,9 +245,9 @@
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(475, 357);
+            this.ClientSize = new System.Drawing.Size(356, 290);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.mainStatusStrip);
             this.Controls.Add(this.MainMenu);
@@ -251,6 +259,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.MainMenu;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

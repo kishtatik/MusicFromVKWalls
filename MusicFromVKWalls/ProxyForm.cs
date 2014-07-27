@@ -27,7 +27,6 @@ namespace DichMusicHelper
 
             using (System.Xml.XmlTextWriter writer = new System.Xml.XmlTextWriter(settingsFile, System.Text.Encoding.Unicode))
             {
-                //writer.WriteStartDocument(true);
                 writer.WriteStartElement("ProxySettings");
                 writer.WriteAttributeString("Server", serverBox.Text);
                 writer.WriteAttributeString("Port", portBox.Text);
@@ -35,7 +34,6 @@ namespace DichMusicHelper
                 writer.WriteAttributeString("Password", passwordBox.Text);
                 writer.WriteAttributeString("UseProxy", useProxyBox.Checked.ToString());
                 writer.WriteEndElement();
-                //writer.WriteEndDocument();
                 writer.Close();
             }           
 
