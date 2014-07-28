@@ -41,6 +41,9 @@
             this.downloadButton = new System.Windows.Forms.Button();
             this.mainStatusStrip = new System.Windows.Forms.StatusStrip();
             this.StatusProgress = new System.Windows.Forms.ToolStripProgressBar();
+            this.persentStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.songProgress = new System.Windows.Forms.ToolStripProgressBar();
+            this.songPersentStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.MainMenu = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,7 +54,6 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.myBackgroundWorker = new System.ComponentModel.BackgroundWorker();
-            this.button1 = new System.Windows.Forms.Button();
             this.listMenuStrip.SuspendLayout();
             this.mainStatusStrip.SuspendLayout();
             this.MainMenu.SuspendLayout();
@@ -60,7 +62,7 @@
             // urlBox
             // 
             this.urlBox.Location = new System.Drawing.Point(46, 31);
-            this.urlBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.urlBox.Margin = new System.Windows.Forms.Padding(2);
             this.urlBox.Name = "urlBox";
             this.urlBox.Size = new System.Drawing.Size(230, 20);
             this.urlBox.TabIndex = 0;
@@ -78,7 +80,7 @@
             // getAudioListButton
             // 
             this.getAudioListButton.Location = new System.Drawing.Point(279, 31);
-            this.getAudioListButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.getAudioListButton.Margin = new System.Windows.Forms.Padding(2);
             this.getAudioListButton.Name = "getAudioListButton";
             this.getAudioListButton.Size = new System.Drawing.Size(68, 21);
             this.getAudioListButton.TabIndex = 2;
@@ -90,8 +92,8 @@
             // 
             this.audioListBox.ContextMenuStrip = this.listMenuStrip;
             this.audioListBox.FormattingEnabled = true;
-            this.audioListBox.Location = new System.Drawing.Point(9, 57);
-            this.audioListBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.audioListBox.Location = new System.Drawing.Point(9, 55);
+            this.audioListBox.Margin = new System.Windows.Forms.Padding(2);
             this.audioListBox.Name = "audioListBox";
             this.audioListBox.ScrollAlwaysVisible = true;
             this.audioListBox.Size = new System.Drawing.Size(339, 184);
@@ -130,7 +132,7 @@
             // downloadButton
             // 
             this.downloadButton.Location = new System.Drawing.Point(9, 245);
-            this.downloadButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.downloadButton.Margin = new System.Windows.Forms.Padding(2);
             this.downloadButton.Name = "downloadButton";
             this.downloadButton.Size = new System.Drawing.Size(74, 21);
             this.downloadButton.TabIndex = 4;
@@ -142,6 +144,9 @@
             // 
             this.mainStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.StatusProgress,
+            this.persentStatus,
+            this.songProgress,
+            this.songPersentStatus,
             this.StatusLabel});
             this.mainStatusStrip.Location = new System.Drawing.Point(0, 268);
             this.mainStatusStrip.Name = "mainStatusStrip";
@@ -155,10 +160,28 @@
             this.StatusProgress.Name = "StatusProgress";
             this.StatusProgress.Size = new System.Drawing.Size(75, 16);
             // 
+            // persentStatus
+            // 
+            this.persentStatus.Name = "persentStatus";
+            this.persentStatus.Size = new System.Drawing.Size(17, 17);
+            this.persentStatus.Text = "%";
+            // 
+            // songProgress
+            // 
+            this.songProgress.Name = "songProgress";
+            this.songProgress.Size = new System.Drawing.Size(75, 16);
+            // 
+            // songPersentStatus
+            // 
+            this.songPersentStatus.Name = "songPersentStatus";
+            this.songPersentStatus.Size = new System.Drawing.Size(17, 17);
+            this.songPersentStatus.Text = "%";
+            // 
             // StatusLabel
             // 
             this.StatusLabel.Name = "StatusLabel";
-            this.StatusLabel.Size = new System.Drawing.Size(0, 17);
+            this.StatusLabel.Size = new System.Drawing.Size(67, 17);
+            this.StatusLabel.Text = "StatusLabel";
             // 
             // MainMenu
             // 
@@ -232,23 +255,11 @@
             this.myBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.myBackgroundWorker_DoWork);
             this.myBackgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.myBackgroundWorker_ProgressChanged);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(264, 245);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(83, 21);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Очистить";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(356, 290);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.mainStatusStrip);
             this.Controls.Add(this.MainMenu);
             this.Controls.Add(this.downloadButton);
@@ -259,11 +270,12 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.MainMenu;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MusicFromVKWalls";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.listMenuStrip.ResumeLayout(false);
             this.mainStatusStrip.ResumeLayout(false);
             this.mainStatusStrip.PerformLayout();
@@ -297,7 +309,9 @@
         private System.Windows.Forms.ToolStripMenuItem clearListToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ToolStripProgressBar songProgress;
+        private System.Windows.Forms.ToolStripStatusLabel persentStatus;
+        private System.Windows.Forms.ToolStripStatusLabel songPersentStatus;
 
     }
 }

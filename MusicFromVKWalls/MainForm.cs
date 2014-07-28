@@ -1,16 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Security.Policy;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
 using System.Xml.Linq;
 
 namespace DichMusicHelper
@@ -30,7 +26,7 @@ namespace DichMusicHelper
         {                       
             if(!urlBox.Text.Contains("wall")) 
                 return;
-
+            
             getAudioListButton.Enabled = false;
 
             StatusLabel.Text = "Получение списка композиций...";
@@ -44,16 +40,9 @@ namespace DichMusicHelper
                 list.Add(tmp);
             }
 
-            if (temp.Count == 0)
-            {
-                StatusLabel.Text = "Не удалось загрузить композиции";
-            }
-            else
-            {
-                StatusLabel.Text = "";
-            }
+            StatusLabel.Text = temp.Count == 0 ? "Не удалось загрузить композиции" : "";
 
-            foreach (AudioInfo song in temp)
+            foreach(AudioInfo song in temp)
             {
                 audioListBox.Items.Add(song.Artist + " - " + song.Title, true);
             }
@@ -152,7 +141,7 @@ namespace DichMusicHelper
 
         private void button2_Click(object sender, EventArgs e)
         {
-            AppSettings settings = new AppSettings();
+            AppSettings settings = new AppSettings();            
 
             if (!Directory.Exists(settings.PathSettings.Path))
             {
@@ -173,8 +162,6 @@ namespace DichMusicHelper
             myBackgroundWorker.RunWorkerAsync();
         }
 
-        
-
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -189,7 +176,9 @@ namespace DichMusicHelper
         private void myBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
             using (WebClient client = new WebClient())
-            {                
+            {
+                CheckForIllegalCrossThreadCalls = false;
+
                 AppSettings settings = new AppSettings();
 
                 if (settings.ProxySettings.UseProxy)
@@ -197,7 +186,20 @@ namespace DichMusicHelper
                     client.Proxy = settings.ProxySettings.GetWebProxy();
                 }
 
+                ManualResetEvent manualReset = new ManualResetEvent(false);
+
                 CurrentTask task = new CurrentTask();
+               
+                client.DownloadProgressChanged += delegate(object send, DownloadProgressChangedEventArgs ea)
+                {
+                    songPersentStatus.Text = ea.ProgressPercentage.ToString() + "% ";
+                    songProgress.Value = ea.ProgressPercentage;                    
+                };
+
+                client.DownloadFileCompleted += delegate(object sende, System.ComponentModel.AsyncCompletedEventArgs ea)
+                {
+                    manualReset.Set();
+                };
 
                 int progress = 0;
 
@@ -236,9 +238,11 @@ namespace DichMusicHelper
                     myBackgroundWorker.ReportProgress(progress, task);
 
                     try
-                    {                       
-                        client.DownloadFile(list[audioIindex].Path, path + @"\" + task.Name + ".mp3");
-                        
+                    {
+                        manualReset.Reset();
+                        client.DownloadFileAsync(new Uri(list[audioIindex].Path), path + @"\" + task.Name + ".mp3");
+                        manualReset.WaitOne();
+
                     }
                     catch (Exception)
                     {
@@ -253,11 +257,12 @@ namespace DichMusicHelper
                 myBackgroundWorker.ReportProgress(100, task);
             }
         }
-
+        
         private void myBackgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             StatusLabel.Text = ((CurrentTask)e.UserState).Name;
             StatusProgress.Value = e.ProgressPercentage > 100 ? 100 : e.ProgressPercentage;
+            persentStatus.Text = e.ProgressPercentage + "% ";
 
             if (e.ProgressPercentage == 100)
             {
@@ -306,10 +311,11 @@ namespace DichMusicHelper
             list.Clear();
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void MainForm_Load(object sender, EventArgs e)
         {
-            audioListBox.Items.Clear();
-            list.Clear();
+            persentStatus.Text = "";
+            songPersentStatus.Text = "";
+            StatusLabel.Text = "";
         }
     }
 }
