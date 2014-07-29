@@ -35,17 +35,13 @@ namespace DichMusicHelper
 
             List<AudioInfo> temp = GetAudioList(wallID);
 
-            foreach (AudioInfo tmp in temp)
+            foreach (AudioInfo song in temp)
             {
-                list.Add(tmp);
+                list.Add(song);
+                audioListBox.Items.Add(song.Artist + " - " + song.Title, true);
             }
 
             StatusLabel.Text = temp.Count == 0 ? "Не удалось загрузить композиции" : "";
-
-            foreach(AudioInfo song in temp)
-            {
-                audioListBox.Items.Add(song.Artist + " - " + song.Title, true);
-            }
 
             getAudioListButton.Enabled = true;
             urlBox.Text = "";
@@ -192,7 +188,7 @@ namespace DichMusicHelper
                
                 client.DownloadProgressChanged += delegate(object send, DownloadProgressChangedEventArgs ea)
                 {
-                    songPersentStatus.Text = ea.ProgressPercentage.ToString() + "% ";
+                    songPersentStatus.Text = ea.ProgressPercentage + "% ";
                     songProgress.Value = ea.ProgressPercentage;                    
                 };
 
@@ -223,7 +219,7 @@ namespace DichMusicHelper
                         }
                     }
 
-                    progress = 100 * audioIindex / audioListBox.CheckedItems.Count;
+                    progress = 100 * audioIindex / audioListBox.Items.Count;
 
                     task.Name = list[audioIindex].Artist + " - " + list[audioIindex].Title;
                     task.Index = audioIindex;
@@ -254,6 +250,15 @@ namespace DichMusicHelper
 
                 task.Name = "Готово";
 
+                foreach (int audioIindex in audioListBox.CheckedIndices)
+                {
+                    audioListBox.SetItemChecked(audioIindex, false);
+                }
+
+                getAudioListButton.Enabled = true;
+                audioListBox.Enabled = true;
+                downloadButton.Enabled = true;
+
                 myBackgroundWorker.ReportProgress(100, task);
             }
         }
@@ -263,18 +268,6 @@ namespace DichMusicHelper
             StatusLabel.Text = ((CurrentTask)e.UserState).Name;
             StatusProgress.Value = e.ProgressPercentage > 100 ? 100 : e.ProgressPercentage;
             persentStatus.Text = e.ProgressPercentage + "% ";
-
-            if (e.ProgressPercentage == 100)
-            {
-                foreach (int audioIindex in audioListBox.CheckedIndices)
-                {
-                    audioListBox.SetItemChecked(audioIindex, false);
-                }
-
-                getAudioListButton.Enabled = true;
-                audioListBox.Enabled = true;
-                downloadButton.Enabled = true;
-            }
         }
 
         private void pathToolStripMenuItem_Click(object sender, EventArgs e)

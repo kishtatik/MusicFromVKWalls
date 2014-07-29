@@ -44,7 +44,6 @@
             this.persentStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.songProgress = new System.Windows.Forms.ToolStripProgressBar();
             this.songPersentStatus = new System.Windows.Forms.ToolStripStatusLabel();
-            this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.MainMenu = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,6 +53,7 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.myBackgroundWorker = new System.ComponentModel.BackgroundWorker();
+            this.StatusLabel = new System.Windows.Forms.Label();
             this.listMenuStrip.SuspendLayout();
             this.mainStatusStrip.SuspendLayout();
             this.MainMenu.SuspendLayout();
@@ -146,8 +146,7 @@
             this.StatusProgress,
             this.persentStatus,
             this.songProgress,
-            this.songPersentStatus,
-            this.StatusLabel});
+            this.songPersentStatus});
             this.mainStatusStrip.Location = new System.Drawing.Point(0, 268);
             this.mainStatusStrip.Name = "mainStatusStrip";
             this.mainStatusStrip.Padding = new System.Windows.Forms.Padding(1, 0, 10, 0);
@@ -176,12 +175,6 @@
             this.songPersentStatus.Name = "songPersentStatus";
             this.songPersentStatus.Size = new System.Drawing.Size(17, 17);
             this.songPersentStatus.Text = "%";
-            // 
-            // StatusLabel
-            // 
-            this.StatusLabel.Name = "StatusLabel";
-            this.StatusLabel.Size = new System.Drawing.Size(67, 17);
-            this.StatusLabel.Text = "StatusLabel";
             // 
             // MainMenu
             // 
@@ -255,11 +248,21 @@
             this.myBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.myBackgroundWorker_DoWork);
             this.myBackgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.myBackgroundWorker_ProgressChanged);
             // 
+            // StatusLabel
+            // 
+            this.StatusLabel.AutoSize = true;
+            this.StatusLabel.Location = new System.Drawing.Point(88, 249);
+            this.StatusLabel.Name = "StatusLabel";
+            this.StatusLabel.Size = new System.Drawing.Size(63, 13);
+            this.StatusLabel.TabIndex = 7;
+            this.StatusLabel.Text = "StatusLabel";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(356, 290);
+            this.Controls.Add(this.StatusLabel);
             this.Controls.Add(this.mainStatusStrip);
             this.Controls.Add(this.MainMenu);
             this.Controls.Add(this.downloadButton);
@@ -295,7 +298,6 @@
         private System.Windows.Forms.Button downloadButton;
         private System.Windows.Forms.StatusStrip mainStatusStrip;
         private System.Windows.Forms.ToolStripProgressBar StatusProgress;
-        private System.Windows.Forms.ToolStripStatusLabel StatusLabel;
         private System.Windows.Forms.MenuStrip MainMenu;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
@@ -312,6 +314,7 @@
         private System.Windows.Forms.ToolStripProgressBar songProgress;
         private System.Windows.Forms.ToolStripStatusLabel persentStatus;
         private System.Windows.Forms.ToolStripStatusLabel songPersentStatus;
+        private System.Windows.Forms.Label StatusLabel;
 
     }
 }
