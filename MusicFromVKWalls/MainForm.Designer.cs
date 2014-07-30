@@ -1,4 +1,4 @@
-﻿namespace DichMusicHelper
+﻿namespace MusicFromVKWalls
 {
     partial class MainForm
     {

@@ -8,8 +8,9 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using DichMusicHelper;
 
-namespace DichMusicHelper
+namespace MusicFromVKWalls
 {
     public partial class MainForm : Form
     {
@@ -31,9 +32,9 @@ namespace DichMusicHelper
 
             StatusLabel.Text = "Получение списка композиций...";
 
-            string wallID = GetWallID(urlBox.Text);
+            string wallId = GetWallID(urlBox.Text);
 
-            List<AudioInfo> temp = GetAudioList(wallID);
+            List<AudioInfo> temp = GetAudioList(wallId);
 
             foreach (AudioInfo song in temp)
             {
@@ -54,7 +55,7 @@ namespace DichMusicHelper
 
             string tmp = urlString.Substring(urlString.IndexOf("wall") + 4);
 
-            StringBuilder wallId = new StringBuilder();
+            var wallId = new StringBuilder();
             foreach (char ch in tmp)
             {
                 if ((Char.IsDigit(ch)) || ch == '-' || ch == '_')
@@ -72,7 +73,7 @@ namespace DichMusicHelper
 
         private List<AudioInfo> GetAudioList(string postID)
         {
-            List<AudioInfo> audioList = new List<AudioInfo>();
+            var audioList = new List<AudioInfo>();
 
             string url = @"https://api.vk.com/method/wall.getById.xml?posts=" +
                          postID +
@@ -82,7 +83,7 @@ namespace DichMusicHelper
                                                 
                 HttpWebRequest req = (HttpWebRequest)HttpWebRequest.Create(url);
 
-                AppSettings settings = new AppSettings();
+                var settings = new AppSettings();
 
                 if (settings.ProxySettings.UseProxy)
                 {
@@ -106,7 +107,7 @@ namespace DichMusicHelper
 
                 foreach (XElement element in audio)
                 {
-                    AudioInfo info = new AudioInfo();
+                    var info = new AudioInfo();
 
                     info.Artist = ReplaceBadChars(element.Element("artist").Value);
                     info.Title = ReplaceBadChars(element.Element("title").Value);
@@ -137,7 +138,7 @@ namespace DichMusicHelper
 
         private void button2_Click(object sender, EventArgs e)
         {
-            AppSettings settings = new AppSettings();            
+            var settings = new AppSettings();            
 
             if (!Directory.Exists(settings.PathSettings.Path))
             {
@@ -151,40 +152,37 @@ namespace DichMusicHelper
                 return;
             }
 
-            getAudioListButton.Enabled = false;
-            audioListBox.Enabled = false;
-            downloadButton.Enabled = false;
+            EnableComponents(false);
 
             myBackgroundWorker.RunWorkerAsync();
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void proxyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ProxyForm proxyForm = new ProxyForm();
+            var proxyForm = new ProxyForm();
             proxyForm.ShowDialog();
         }
 
         private void myBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            using (WebClient client = new WebClient())
+            using (var client = new WebClient())
             {
                 CheckForIllegalCrossThreadCalls = false;
 
-                AppSettings settings = new AppSettings();
+                var settings = new AppSettings();
 
                 if (settings.ProxySettings.UseProxy)
                 {
                     client.Proxy = settings.ProxySettings.GetWebProxy();
                 }
 
-                ManualResetEvent manualReset = new ManualResetEvent(false);
-
-                CurrentTask task = new CurrentTask();
+                var manualReset = new ManualResetEvent(false);
+                var task = new CurrentTask();
                
                 client.DownloadProgressChanged += delegate(object send, DownloadProgressChangedEventArgs ea)
                 {
@@ -197,19 +195,15 @@ namespace DichMusicHelper
                     manualReset.Set();
                 };
 
-                int progress = 0;
-
-                string currentArtist = "";
+                int progress = 0;                
                 string path = settings.PathSettings.Path;
 
                 for (int audioIindex = 0; audioIindex < audioListBox.Items.Count; audioIindex++)
                 {
-                    if (!audioListBox.GetItemChecked(audioIindex))
-                    {
-                        continue;
-                    }
+                    if (!audioListBox.GetItemChecked(audioIindex))                    
+                        continue;                    
 
-                    if (settings.PathSettings.CreateFolder && currentArtist != list[audioIindex].Artist)
+                    if (settings.PathSettings.CreateFolder)
                     {
                         path = settings.PathSettings.Path + @"\" + list[audioIindex].Artist;
 
@@ -226,10 +220,8 @@ namespace DichMusicHelper
 
                     string fileName = path + @"\" + task.Name + ".mp3";
 
-                    if (File.Exists(fileName))
-                    {
-                        continue;
-                    }
+                    if (File.Exists(fileName))                    
+                        continue;                    
 
                     myBackgroundWorker.ReportProgress(progress, task);
 
@@ -242,7 +234,9 @@ namespace DichMusicHelper
                     }
                     catch (Exception)
                     {
-                        
+                        StatusLabel.Text = "Ошибка при загрузке композиций";
+                        EnableComponents(true);
+                        return;
                     }
 
                     Thread.Sleep(200);
@@ -250,14 +244,8 @@ namespace DichMusicHelper
 
                 task.Name = "Готово";
 
-                foreach (int audioIindex in audioListBox.CheckedIndices)
-                {
-                    audioListBox.SetItemChecked(audioIindex, false);
-                }
-
-                getAudioListButton.Enabled = true;
-                audioListBox.Enabled = true;
-                downloadButton.Enabled = true;
+                SetCheckedAudioList(false);
+                EnableComponents(true);
 
                 myBackgroundWorker.ReportProgress(100, task);
             }
@@ -272,30 +260,24 @@ namespace DichMusicHelper
 
         private void pathToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PathSettingForm settingForm = new PathSettingForm();
+            var settingForm = new PathSettingForm();
             settingForm.ShowDialog(this);
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AboutForm about = new AboutForm();
+            var about = new AboutForm();
             about.ShowDialog(this);
         }
 
         private void selectAllStripMenuItem_Click(object sender, EventArgs e)
         {
-            for (int audioIindex = 0; audioIindex < audioListBox.Items.Count; audioIindex++)
-            {
-                audioListBox.SetItemChecked(audioIindex, true);
-            }
+            SetCheckedAudioList(true);
         }
 
         private void selectNoAllToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            for (int audioIindex = 0; audioIindex < audioListBox.Items.Count; audioIindex++)
-            {
-                audioListBox.SetItemChecked(audioIindex, false);
-            }
+            SetCheckedAudioList(false);
         }
 
         private void clearListToolStripMenuItem_Click(object sender, EventArgs e)
@@ -304,11 +286,26 @@ namespace DichMusicHelper
             list.Clear();
         }
 
+        private void EnableComponents(bool enabled)
+        {
+            getAudioListButton.Enabled = enabled;
+            audioListBox.Enabled = enabled;
+            downloadButton.Enabled = enabled;
+        }
+
         private void MainForm_Load(object sender, EventArgs e)
         {
             persentStatus.Text = "";
             songPersentStatus.Text = "";
             StatusLabel.Text = "";
+        }
+
+        private void SetCheckedAudioList(bool check)
+        {
+            for (int audioIindex = 0; audioIindex < audioListBox.Items.Count; audioIindex++)
+            {
+                audioListBox.SetItemChecked(audioIindex, check);
+            }
         }
     }
 }
